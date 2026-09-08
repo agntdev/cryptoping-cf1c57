@@ -1,20 +1,4 @@
 [
-  {
-    "name": "Settings",
-    "steps": [
-      {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Open settings to configure timezone, quiet hours, morning summary time, and cooldown defaults."
-            }
-          }
-        ],
-        "send": {
-          "callback": "settings:open"
-        }
-      }
-    ]
-  }
+  { "name": "settings open", "steps": [{ "send": { "callback": "settings:open" }, "expect": [{ "method": "sendMessage" }] }] },
+  { "name": "quiet hours accept overnight period", "steps": [{ "send": { "callback": "settings:quiet" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Send quiet hours as HH:MM-HH:MM, for example 22:00-07:00. Send off to disable them." } }] }, { "send": { "text": "22:00-07:00" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Quiet hours saved: 22:00–07:00." } }] }] }
 ]

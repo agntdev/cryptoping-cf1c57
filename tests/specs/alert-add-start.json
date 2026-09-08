@@ -1,20 +1,11 @@
 [
-  {
-    "name": "Add alert",
-    "steps": [
-      {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Guided flow to create a new alert for a chosen or typed ticker."
-            }
-          }
-        ],
-        "send": {
-          "callback": "alert:add:start"
-        }
-      }
-    ]
-  }
+  { "name": "price threshold alert flow", "steps": [
+    { "send": { "callback": "alert:add:start" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Choose a watched ticker or type one." } }] },
+    { "send": { "callback": "alert:ticker:BTC" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Choose the alert type." } }] },
+    { "send": { "callback": "alert:type:price" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Send the target price in USD." } }] },
+    { "send": { "text": "100000" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Choose a direction." } }] },
+    { "send": { "callback": "alert:direction:above" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Send a cooldown in minutes, or tap the 60-minute default." } }] },
+    { "send": { "callback": "alert:cooldown:default" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Save alert: BTC above $100000. Cooldown: 60 minutes." } }] },
+    { "send": { "callback": "alert:confirm" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Alert saved: BTC above $100000." } }] }
+  ] }
 ]

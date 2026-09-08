@@ -1,16 +1,11 @@
 [
   {
-    "name": "/start replies with the welcome + main menu",
+    "name": "onboarding saves timezone and morning summary choice",
     "steps": [
-      {
-        "send": { "text": "/start" },
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": { "text": "👋 Welcome! Tap a button below to get started." }
-          }
-        ]
-      }
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage", "payload": { "text": "CryptoPing tracks private crypto prices and alerts.\n\nChoose your timezone." } }] },
+      { "send": { "callback": "onboard:tz:UTC" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Would you like a morning summary?" } }] },
+      { "send": { "callback": "onboard:summary:yes" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Send the local time for your summary, for example 08:00." } }] },
+      { "send": { "text": "08:00" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Morning summary saved." } }] }
     ]
   }
 ]

@@ -1,20 +1,4 @@
 [
-  {
-    "name": "/price",
-    "steps": [
-      {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Return current price for a ticker or all watched tickers. Use typed input for ticker or nothing for all."
-            }
-          }
-        ],
-        "send": {
-          "text": "/price"
-        }
-      }
-    ]
-  }
+  { "name": "price rejects unknown ticker with a correction", "steps": [{ "send": { "text": "/price DOGE" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Couldn't find DOGE. Use a common ticker such as BTC, ETH, TON, SOL, USDT, or XRP." } }] }] },
+  { "name": "price returns a current quote", "steps": [{ "send": { "text": "/price BTC" }, "expect": [{ "method": "sendMessage" }] }] }
 ]
