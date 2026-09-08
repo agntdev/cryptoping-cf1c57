@@ -1,0 +1,7 @@
+# CryptoPing
+
+Personal Telegram bot to watch crypto tickers, send threshold & percent-move alerts, and provide on-demand prices and optional morning summaries.
+
+Spec: [`docs/blueprint.md`](docs/blueprint.md).
+
+Built on [agnt-gm.ai](https://agnt-gm.ai). The whole bot is built and refined here as pull requests across successive build passes.
