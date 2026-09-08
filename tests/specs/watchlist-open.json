@@ -1,20 +1,4 @@
 [
-  {
-    "name": "Manage watchlist",
-    "steps": [
-      {
-        "expect": [
-          {
-            "method": "sendMessage",
-            "payload": {
-              "text": "Open the watchlist manager (seeded coins shown; add, edit, remove)."
-            }
-          }
-        ],
-        "send": {
-          "callback": "watchlist:open"
-        }
-      }
-    ]
-  }
+  { "name": "watchlist opens with seeded coins", "steps": [{ "send": { "callback": "watchlist:open" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Your watchlist: BTC, ETH, TON." } }] }] },
+  { "name": "custom ticker is validated and added", "steps": [{ "send": { "callback": "watchlist:add" }, "expect": [{ "method": "editMessageText", "payload": { "text": "Send a ticker to add, for example SOL." } }] }, { "send": { "text": "SOL" }, "expect": [{ "method": "sendMessage", "payload": { "text": "SOL was added to your watchlist." } }] }] }
 ]

@@ -1,0 +1,11 @@
+[
+  {
+    "name": "stats remains private when owner access is unset",
+    "steps": [
+      {
+        "send": { "text": "/stats" },
+        "expect": [{ "method": "sendMessage", "payload": { "text": "Owner access isn't set up yet." } }]
+      }
+    ]
+  }
+]
